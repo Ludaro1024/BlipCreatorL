@@ -1,17 +1,21 @@
 Config = {}
-Config.blips = {
-{x = -1041.9, y = -2737.9, z = 20.8, blip = 68, color = 1, name = "Boat blip"},
+Config.Blips = {
+{x = 216.5447, y = -1407.9435, z = 29.2908, blip = 68, name = "Boat blip", color = 1},
 }
 
-for k, blip in pairs(Config.blips) do
-local blip = AddBlipForCoord(blip.x, blip.y, blip.z)
-local name = blip.name or 'Blip Name not Set!'
-SetBlipSprite (blip, blip.blip)
-SetBlipScale  (blip, 0.65)
-SetBlipDisplay(blip, 4)
-SetBlipColour (blip, blip.color)
-SetBlipAsShortRange(blip, true)
-BeginTextCommandSetBlipName('STRING') 
-AddTextComponentString(name)
-EndTextCommandSetBlipName(blip)
-end
+for k, marker in pairs(Config.Blips) do
+        if marker.blip ~= false then
+        
+            local name = marker.name or 'Default Blip'
+            
+            local blip = AddBlipForCoord(marker.x, marker.y, marker.z)
+            SetBlipSprite (blip, marker.blip)
+            SetBlipScale  (blip, 0.65)
+            SetBlipDisplay(blip, 4)
+            SetBlipColour (blip, marker.color)
+            SetBlipAsShortRange(blip, true)
+            BeginTextCommandSetBlipName('STRING') 
+            AddTextComponentString(name)
+            EndTextCommandSetBlipName(blip)
+        end
+    end
